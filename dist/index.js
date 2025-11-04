@@ -38,7 +38,9 @@ const dotenv = __importStar(require("dotenv"));
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
 // Charger les variables d'environnement AVANT d'importer config
-dotenv.config();
+// En production (Railway), utilise .env.production, sinon .env
+const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env';
+dotenv.config({ path: envFile });
 const config_1 = require("./config");
 // Créer une nouvelle instance client
 const client = new discord_js_1.Client({ intents: [discord_js_1.GatewayIntentBits.Guilds] });

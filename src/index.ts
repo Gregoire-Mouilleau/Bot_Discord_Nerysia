@@ -4,7 +4,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 // Charger les variables d'environnement AVANT d'importer config
-dotenv.config();
+// En production (Railway), utilise .env.production, sinon .env
+const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env';
+dotenv.config({ path: envFile });
 
 import { config } from './config';
 

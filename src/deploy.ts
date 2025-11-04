@@ -1,5 +1,7 @@
 import * as dotenv from 'dotenv';
-dotenv.config();
+// En production (Railway), utilise .env.production, sinon .env
+const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env';
+dotenv.config({ path: envFile });
 
 import { REST, Routes } from 'discord.js';
 import { config } from './config';

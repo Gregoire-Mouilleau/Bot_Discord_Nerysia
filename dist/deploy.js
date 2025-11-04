@@ -35,7 +35,9 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deployCommands = deployCommands;
 const dotenv = __importStar(require("dotenv"));
-dotenv.config();
+// En production (Railway), utilise .env.production, sinon .env
+const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env';
+dotenv.config({ path: envFile });
 const discord_js_1 = require("discord.js");
 const config_1 = require("./config");
 const fs = __importStar(require("fs"));
