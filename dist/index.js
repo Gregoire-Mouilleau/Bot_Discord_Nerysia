@@ -46,7 +46,7 @@ const client = new discord_js_1.Client({ intents: [discord_js_1.GatewayIntentBit
 client.commands = new discord_js_1.Collection();
 // Charger les commandes
 const commandsPath = path.join(__dirname, 'commands');
-const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js') || file.endsWith('.ts'));
+const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 for (const file of commandFiles) {
     const filePath = path.join(commandsPath, file);
     const command = require(filePath);
