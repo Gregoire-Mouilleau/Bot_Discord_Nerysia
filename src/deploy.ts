@@ -1,12 +1,16 @@
-import * as dotenv from 'dotenv';
-// En production (Railway), utilise .env.production, sinon .env
-const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env';
-dotenv.config({ path: envFile });
-
 import { REST, Routes } from 'discord.js';
 import { config } from './config';
 import * as fs from 'fs';
 import * as path from 'path';
+
+// En local seulement, charger le .env
+if (process.env.NODE_ENV !== 'production') {
+  try {
+    require('dotenv').config();
+  } catch (e) {
+    console.log('dotenv non disponible, utilisation des variables d\'environnement directes');
+  }
+}
 
 const commands: any[] = [];
 

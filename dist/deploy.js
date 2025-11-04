@@ -34,14 +34,19 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deployCommands = deployCommands;
-const dotenv = __importStar(require("dotenv"));
-// En production (Railway), utilise .env.production, sinon .env
-const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env';
-dotenv.config({ path: envFile });
 const discord_js_1 = require("discord.js");
 const config_1 = require("./config");
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
+// En local seulement, charger le .env
+if (process.env.NODE_ENV !== 'production') {
+    try {
+        require('dotenv').config();
+    }
+    catch (e) {
+        console.log('dotenv non disponible, utilisation des variables d\'environnement directes');
+    }
+}
 const commands = [];
 // Charger toutes les commandes depuis le dossier commands
 const commandsPath = path.join(__dirname, 'commands');

@@ -1,14 +1,16 @@
 import { Client, Collection, Events, GatewayIntentBits } from 'discord.js';
-import * as dotenv from 'dotenv';
 import * as fs from 'fs';
 import * as path from 'path';
-
-// Charger les variables d'environnement AVANT d'importer config
-// En production (Railway), utilise .env.production, sinon .env
-const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env';
-dotenv.config({ path: envFile });
-
 import { config } from './config';
+
+// En local seulement, charger le .env
+if (process.env.NODE_ENV !== 'production') {
+  try {
+    require('dotenv').config();
+  } catch (e) {
+    console.log('dotenv non disponible, utilisation des variables d\'environnement directes');
+  }
+}
 
 // Étendre le type Client pour inclure commands
 declare module 'discord.js' {

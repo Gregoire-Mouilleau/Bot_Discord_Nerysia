@@ -34,14 +34,18 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
-const dotenv = __importStar(require("dotenv"));
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
-// Charger les variables d'environnement AVANT d'importer config
-// En production (Railway), utilise .env.production, sinon .env
-const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env';
-dotenv.config({ path: envFile });
 const config_1 = require("./config");
+// En local seulement, charger le .env
+if (process.env.NODE_ENV !== 'production') {
+    try {
+        require('dotenv').config();
+    }
+    catch (e) {
+        console.log('dotenv non disponible, utilisation des variables d\'environnement directes');
+    }
+}
 // Créer une nouvelle instance client
 const client = new discord_js_1.Client({ intents: [discord_js_1.GatewayIntentBits.Guilds] });
 // Créer une collection pour les commandes
