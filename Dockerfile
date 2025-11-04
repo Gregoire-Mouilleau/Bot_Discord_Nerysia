@@ -2,17 +2,11 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
-
-# Install only production dependencies
-RUN npm ci --only=production
-
-# Copy the rest of the application (including compiled JS)
+# Copy everything
 COPY . .
 
-# Expose port (Railway will use this)
-EXPOSE $PORT
+# Install dependencies
+RUN npm install --production
 
 # Start the application
 CMD ["npm", "start"]
