@@ -17,11 +17,11 @@
   "dependencies": {
     "discord.js": "^14.14.1",
     "minecraft-server-util": "^5.4.3",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "typescript": "^5.3.2",
+    "@types/node": "^20.10.0"
   },
   "devDependencies": {
-    "@types/node": "^20.10.0",
-    "typescript": "^5.3.2",
     "ts-node": "^10.9.1"
   },
   "engines": {
