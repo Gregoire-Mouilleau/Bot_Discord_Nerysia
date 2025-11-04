@@ -1,5 +1,5 @@
-[phases.build]
-# Skip build phase - we already have compiled JS files
+[phases.install]
+cmds = ["npm install"]
 
 [start]
 cmd = "npm start"
