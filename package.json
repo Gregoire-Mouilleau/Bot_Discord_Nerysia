@@ -4,12 +4,11 @@
   "description": "Bot Discord pour la gestion de serveur Minecraft",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "compile": "tsc",
     "start": "node dist/index.js",
     "dev": "ts-node src/index.ts",
     "watch": "tsc -w",
-    "deploy": "ts-node src/deploy-commands.ts",
-    "postinstall": "echo 'Dependencies installed successfully' && ls node_modules | grep discord"
+    "deploy": "ts-node src/deploy-commands.ts"
   },
   "keywords": ["discord", "bot", "minecraft", "typescript"],
   "author": "Gregoire Mouilleau",
