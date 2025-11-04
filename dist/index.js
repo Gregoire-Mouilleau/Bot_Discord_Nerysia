@@ -92,9 +92,16 @@ client.on(discord_js_1.Events.InteractionCreate, async (interaction) => {
         }
     }
 });
+// Debug complet avant connexion
+console.log('🔍 Debug complet des variables :');
+console.log('process.env.DISCORD_TOKEN:', process.env.DISCORD_TOKEN ? 'PRÉSENT' : 'MANQUANT');
+console.log('process.env.CLIENT_ID:', process.env.CLIENT_ID ? 'PRÉSENT' : 'MANQUANT');
+console.log('config.discord.token:', config_1.config.discord.token ? 'PRÉSENT' : 'MANQUANT');
+console.log('config.discord.clientId:', config_1.config.discord.clientId ? 'PRÉSENT' : 'MANQUANT');
 // Se connecter à Discord
 if (!config_1.config.discord.token) {
     console.error('❌ Token Discord manquant ! Vérifiez votre fichier .env');
+    console.error('Variables d\'environnement disponibles:', Object.keys(process.env).join(', '));
     process.exit(1);
 }
 // Déployer les commandes puis se connecter
