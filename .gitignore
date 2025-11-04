@@ -87,9 +87,10 @@ typings/
 .tern-port
 
 # Compiled JavaScript files
-dist/
-*.js
-*.js.map
+# Dist folder now included for Railway deployment
+# dist/
+# *.js
+# *.js.map
 
 # IDE files
 .vscode/
